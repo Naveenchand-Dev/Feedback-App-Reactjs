@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "./components/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import FeedbackList from "./components/FeedbackList";
 import { useState } from "react";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
 import { v4 as uuidv4 } from "uuid";
+import AboutPage from "./pages/AboutPage";
+import AboutIconLink from "./components/AboutIconLink";
 
 function App() {
   const [feedbacks, setFeedback] = useState(FeedbackData);
@@ -24,16 +27,31 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       {/* Passing multiple Props */}
       {/* <Header bgColor="red" textColor="blue" /> */}
       <Header />
       <div className="container">
-        <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStats feedback={feedbacks} />
-        <FeedbackList feedback={feedbacks} handleDelete={deleteFeedback} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <FeedbackForm handleAdd={addFeedback} />
+                <FeedbackStats feedback={feedbacks} />
+                <FeedbackList
+                  feedback={feedbacks}
+                  handleDelete={deleteFeedback}
+                />
+                <AboutIconLink />
+              </>
+            }
+          ></Route>
+
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
 
