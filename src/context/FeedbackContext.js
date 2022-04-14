@@ -16,12 +16,12 @@ export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([
     {
       id: 1,
-      text: "This is from context",
+      text: "Feedback item 1",
       rating: 10,
     },
     {
       id: 2,
-      text: "This is from context 22",
+      text: "Feedback item 2",
       rating: 8,
     },
   ]);
@@ -39,6 +39,7 @@ export const FeedbackProvider = ({ children }) => {
         item.id == id ? { ...item, ...updatedFeedback } : item
       )
     );
+    setFeedbackEdit({ item: {}, edit: false });
   };
 
   // set item to be updated
