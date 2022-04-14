@@ -71,7 +71,8 @@ function App() {
 
           <Route path="/about" element={<AboutPage />} />
           {/* To catch params in the url we use ":" and then the name of the param */}
-          {/* <Route path="/post/:id/:name" element={<Post />} /> */}
+          {/*  "/*" is used for nested routes (routes inside a route having its base route) */}
+          <Route path="/post/*" element={<Post />} />
         </Routes>
       </div>
     </Router>
