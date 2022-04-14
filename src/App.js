@@ -1,6 +1,12 @@
 import React from "react";
 import Header from "./components/Header";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+  Link,
+} from "react-router-dom";
 import FeedbackList from "./components/FeedbackList";
 import { useState } from "react";
 import FeedbackData from "./data/FeedbackData";
@@ -9,6 +15,8 @@ import FeedbackForm from "./components/FeedbackForm";
 import { v4 as uuidv4 } from "uuid";
 import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./components/AboutIconLink";
+import Card from "./components/shared/Card";
+import Post from "./components/Post";
 
 function App() {
   const [feedbacks, setFeedback] = useState(FeedbackData);
@@ -43,12 +51,27 @@ function App() {
                   feedback={feedbacks}
                   handleDelete={deleteFeedback}
                 />
+
+                {/* NavLink - Navigation Links to show in Home Screen */}
+                {/* Link - also works */}
+                <Card>
+                  <NavLink to="/" activeClassName="active">
+                    Home
+                  </NavLink>
+                </Card>
+                <Card>
+                  <Link to="/about" activeClassName="active">
+                    About
+                  </Link>
+                </Card>
                 <AboutIconLink />
               </>
             }
           ></Route>
 
           <Route path="/about" element={<AboutPage />} />
+          {/* To catch params in the url we use ":" and then the name of the param */}
+          {/* <Route path="/post/:id/:name" element={<Post />} /> */}
         </Routes>
       </div>
     </Router>
