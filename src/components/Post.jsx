@@ -7,7 +7,13 @@ import React from "react";
 
 // To Redirect or Navigate to a different page
 // use Navigate is react hook which react-router-dom offers a way to navigate to a different page.
-import { Navigate, useNavigate, Routes, Route } from "react-router-dom";
+import {
+  Navigate,
+  useNavigate,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 
 function Post() {
   // const params = useParams();
@@ -28,6 +34,7 @@ function Post() {
     <div>
       <h1>Post</h1>
       <button onClick={onClick}>Click</button>
+      {/* <h2>{params.id}</h2> */}
       <Routes>
         <Route
           path="/show"
