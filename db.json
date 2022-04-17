@@ -1,0 +1,29 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "Feedback item 1 from json-server"
+    },
+    {
+      "id": 2,
+      "rating": 9,
+      "text": "Feedback item 2 from json-server"
+    },
+    {
+      "id": 3,
+      "rating": 8,
+      "text": "Feedback item 3 from json-server"
+    },
+    {
+      "id": 4,
+      "rating": 7,
+      "text": "Feedback item 4from json-server"
+    },
+    {
+      "rating": "3",
+      "text": "post man , body params",
+      "id": 6
+    }
+  ]
+}
