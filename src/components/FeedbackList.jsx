@@ -2,15 +2,25 @@ import { React, useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
 import { motion, AnimatePresence } from "framer-motion";
 import FeedbackContext from "../context/FeedbackContext";
+import Spinner from "./shared/Spinner";
 
 // "useContext" is a react hook to consume values in a provider created using "createContext" react hook
 
 function FeedbackList() {
-  const { feedback } = useContext(FeedbackContext);
+  const { feedback, isLoading } = useContext(FeedbackContext);
 
-  if (feedback.length === 0) {
+  if (!isLoading && feedback.length === 0) {
     return <h4>No feedback yet</h4>;
   }
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    <div className="feedback-list">
+      {feedback.map((item) => (
+        <FeedbackItem key={item.id} item={item} />
+      ))}
+    </div>
+  );
 
   // return (
   //   <div className="feedback-list">
@@ -36,14 +46,6 @@ function FeedbackList() {
     /* </div>
   ); */
   }
-
-  return (
-    <div className="feedback-list">
-      {feedback.map((item) => (
-        <FeedbackItem key={item.id} item={item} />
-      ))}
-    </div>
-  );
 }
 
 export default FeedbackList;
